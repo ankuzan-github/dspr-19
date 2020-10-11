@@ -16,17 +16,19 @@ def score_game(game_core_func):
 def game_core(number):
     """Сначала устанавливаем середину множества, а потом уменьшаем или увеличиваем его пополам в зависимости от того, больше оно или меньше нужного.
        Функция принимает загаданное число и возвращает число попыток"""
-    count = 1
+    count = 0
     mid = 50
     predict = mid
-    while number != predict:
+    while True:
         count += 1
         if number > predict:
             predict += mid
         elif number < predict:
             predict -= mid
         mid = np.math.ceil(mid / 2)  # делим шаг пополам и округляем в большую сторону
-    return count  # выход из цикла, если угадали
+
+        if number == predict:
+            return count  # выход из цикла, если угадали
 
 
 # запускаем
